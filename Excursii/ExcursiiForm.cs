@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,38 +14,34 @@ namespace Excursii
 {
     public partial class ExcursiiForm : Form
     {
-        public List<Excursie> lista=new List<Excursie>();
-
-
-
-        private void GolesteListBox()
-        {
-            lista.Clear();
-        }
-        private void reincarcaList()
-        {
-            lstExcursii.DataSource = null;
-            lstExcursii.DataSource =new List<Excursie>();
-        }
-
-
+        public List<Excursie> lista = new List<Excursie>();
         public ExcursiiForm()
         {
             InitializeComponent();
+           
+             
         }
 
-        private void ExcursiiForm_Load(object sender, EventArgs e)
+        public void LoadExcursii()
         {
-            Excursie e1=new Excursie();
+            lista.Clear();
+            lista = DateExcursii();
+        }
+        
+
+
+        private List<Excursie> DateExcursii()
+        {
+            Excursie e1 = new Excursie();
             e1.destinatie = "Roma";
             e1.tara = "Italia";
             e1.zile = 4;
             e1.pretPeZi = 250;
             e1.locuri = 12;
             e1.confirmata = true;
-            
-            
-            Excursie e2=new Excursie();
+
+
+            Excursie e2 = new Excursie();
             e2.destinatie = "Paris";
             e2.tara = "Franta";
             e2.zile = 4;
@@ -124,17 +122,42 @@ namespace Excursii
             lista.Add(e7);
             lista.Add(e8);
             lista.Add(e9);
-            lista.Add(e10); 
+            lista.Add(e10);
+        
+            return lista;
+        }
+
+
+        private void ExcursiiForm_Load(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnIncarca_Click(object sender, EventArgs e)
         {
-            reincarcaList();
-            GolesteListBox();
+            lstExcursii.ClearSelected();
+            LoadExcursii();
+            for(int i = 0; i < lista.Count; i++)
+            {
+                lstExcursii.Items.Add(lista[i].destinatie + "- (" + lista[i].tara + ") -" + lista[i].zile + " zile-" + lista[i].pretPeZi);
+            }
+            lblStare.Text = "Numar excursii: " + lista.Count; 
+        }
 
+        private void s(object sender, MouseEventArgs e)
+        {
 
             
-           
+
+        }
+
+        private void lstExcursii_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int poz = lstExcursii.SelectedIndex;
+
+
+
+            txtDetalii.Text = lista[poz].Desriere();
         }
     }
 }

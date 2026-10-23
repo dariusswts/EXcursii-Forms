@@ -31,21 +31,26 @@
             this.lstExcursii = new System.Windows.Forms.ListBox();
             this.btnIncarca = new System.Windows.Forms.Button();
             this.lblStare = new System.Windows.Forms.Label();
+            this.txtDetalii = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lstExcursii
             // 
             this.lstExcursii.FormattingEnabled = true;
-            this.lstExcursii.Location = new System.Drawing.Point(27, 12);
+            this.lstExcursii.Location = new System.Drawing.Point(7, 12);
             this.lstExcursii.Name = "lstExcursii";
-            this.lstExcursii.Size = new System.Drawing.Size(716, 160);
+            this.lstExcursii.Size = new System.Drawing.Size(291, 134);
             this.lstExcursii.TabIndex = 0;
+            this.lstExcursii.MouseClick += new System.Windows.Forms.MouseEventHandler(this.s);
+            this.lstExcursii.SelectedIndexChanged += new System.EventHandler(this.lstExcursii_SelectedIndexChanged);
             // 
             // btnIncarca
             // 
-            this.btnIncarca.Location = new System.Drawing.Point(12, 367);
+            this.btnIncarca.Location = new System.Drawing.Point(387, 135);
             this.btnIncarca.Name = "btnIncarca";
-            this.btnIncarca.Size = new System.Drawing.Size(191, 71);
+            this.btnIncarca.Size = new System.Drawing.Size(154, 44);
             this.btnIncarca.TabIndex = 1;
             this.btnIncarca.Text = "Incarca Lista";
             this.btnIncarca.UseVisualStyleBackColor = true;
@@ -54,23 +59,43 @@
             // lblStare
             // 
             this.lblStare.AutoSize = true;
-            this.lblStare.Location = new System.Drawing.Point(531, 396);
+            this.lblStare.Location = new System.Drawing.Point(429, 76);
             this.lblStare.Name = "lblStare";
             this.lblStare.Size = new System.Drawing.Size(35, 13);
             this.lblStare.TabIndex = 2;
             this.lblStare.Text = "label1";
+            // 
+            // txtDetalii
+            // 
+            this.txtDetalii.Location = new System.Drawing.Point(534, 12);
+            this.txtDetalii.Multiline = true;
+            this.txtDetalii.Name = "txtDetalii";
+            this.txtDetalii.ReadOnly = true;
+            this.txtDetalii.Size = new System.Drawing.Size(254, 117);
+            this.txtDetalii.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 265);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(781, 173);
+            this.dataGridView1.TabIndex = 4;
             // 
             // ExcursiiForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.txtDetalii);
             this.Controls.Add(this.lblStare);
             this.Controls.Add(this.btnIncarca);
             this.Controls.Add(this.lstExcursii);
             this.Name = "ExcursiiForm";
             this.Text = "ExcursiiForm";
             this.Load += new System.EventHandler(this.ExcursiiForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,5 +106,7 @@
         private System.Windows.Forms.ListBox lstExcursii;
         private System.Windows.Forms.Button btnIncarca;
         private System.Windows.Forms.Label lblStare;
+        private System.Windows.Forms.TextBox txtDetalii;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

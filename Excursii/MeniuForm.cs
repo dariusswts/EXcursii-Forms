@@ -40,8 +40,8 @@ namespace Excursii
 
         private void btnExcursii_Click(object sender, EventArgs e)
         {
-           /// ExcursiiForm f = new ExcursiiForm();
-           /// f.Show();
+           ExcursiiForm f = new ExcursiiForm();
+           f.Show();
         }
     }
 }
