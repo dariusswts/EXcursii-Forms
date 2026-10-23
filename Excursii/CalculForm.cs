@@ -19,10 +19,25 @@ namespace Excursii
 
         private void btnCalculeaza_Click(object sender, EventArgs e)
         {
+            double pret=0;
+            int zile=0;
+            int persoane=0;
+            if (double.TryParse(txtPretZi.Text,out pret)==false) {
+                MessageBox.Show("Introdu corect pretul!!");
+                return;
+            }
+            if (int.TryParse(txtZile.Text, out zile) == false) {
+                MessageBox.Show("Introdu un numar de zile corect !!");
+                return;
+            }
+            if (int.TryParse(txtPersoane.Text, out persoane) == false) {
+                MessageBox.Show("Introdu un numar de persoane corect");
+                return;
+            }
+
+            double total = pret * zile * persoane;
             
-            double total = double.Parse(txtPretZi.Text) *
-                    int.Parse(txtZile.Text) *
-                    int.Parse(txtPersoane.Text);
+            
             if (chkGrup.Checked) {
                 total = total * 0.9;
             }

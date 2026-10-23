@@ -32,9 +32,10 @@ namespace Excursii
         {
             GhidForm f = new GhidForm();
             if (f.ShowDialog() == DialogResult.OK) { 
-                lblGhid.Text="Ghid"+f.Nume+" ("+f.Telefon+")";
+                lblGhid.Text="Ghid: "+f.Nume+" (" +f.Telefon+ ")";
+                
             }
-            f.ShowDialog();
+            
         }
 
         private void btnExcursii_Click(object sender, EventArgs e)
