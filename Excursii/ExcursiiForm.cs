@@ -161,7 +161,7 @@ namespace Excursii
 
         private void btnIncarca_Click(object sender, EventArgs e)
         {
-            lstExcursii.ClearSelected();
+            lstExcursii.Items.Clear();
             IncarcaExcursiiFisier();
             for (int i = 0; i < lista.Count; i++)
             {
