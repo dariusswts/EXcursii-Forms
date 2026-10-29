@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,18 +23,12 @@ namespace Excursii
         public ExcursiiForm()
         {
             InitializeComponent();
+            CreateColumns();
 
 
         }
 
-        public void LoadExcursii()
-        {
-            lista.Clear();
-            lista = DateExcursii();
-        }
-
-
-
+   
         private List<Excursie> DateExcursii()
         {
             Excursie e1 = new Excursie();
@@ -141,6 +137,22 @@ namespace Excursii
             return lista;
         }
 
+        public  void  IncarcaExcursiiFisier()
+        {
+
+            this.lista.Clear();
+            
+            StreamReader streamreadear = new StreamReader("excursii.txt");
+            string linie;
+            
+            while ((linie=streamreadear.ReadLine()) != null) {
+                Excursie a = new Excursie(linie);
+                this.lista.Add(a);
+
+            }
+        }
+
+        
 
         private void ExcursiiForm_Load(object sender, EventArgs e)
         {
@@ -150,7 +162,7 @@ namespace Excursii
         private void btnIncarca_Click(object sender, EventArgs e)
         {
             lstExcursii.ClearSelected();
-            LoadExcursii();
+            IncarcaExcursiiFisier();
             for (int i = 0; i < lista.Count; i++)
             {
                 lstExcursii.Items.Add(lista[i].destinatie + "- (" + lista[i].tara + ") -" + lista[i].zile + " zile-" + lista[i].pretPeZi);
@@ -196,7 +208,8 @@ namespace Excursii
         private void btnDetali_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            CreateColumns();
+
+            IncarcaExcursiiFisier();
    
             for (int i = 0; i < lista.Count; i++)
             {

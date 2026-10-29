@@ -28,12 +28,24 @@ namespace Excursii
 
         }
 
-
-        public Excursie(String destinatiaNou)
+      //  "Paris,Franta,5,300,20,true,Ana".split() => ["Paris","Franta","5","300"
+      
+        public Excursie(String text)
         {
-            this.destinatie = destinatiaNou;
+            string[]campuri= text.Split(',');
+
+            destinatie=campuri[0];
+            tara=campuri[1];
+            zile = int.Parse(campuri[2]);
+            pretPeZi=int.Parse(campuri[3] );
+            locuri = int.Parse(campuri[4]);
+            confirmata =bool.Parse(campuri[5]);
+            ghid=campuri[6];
 
         }
+      
+
+      
 
        public Excursie(String destinatieNou,String taraNou,int zileNou,double pretPeZiNou,int locuriNou,bool confirmataN,string ghid)
         {
