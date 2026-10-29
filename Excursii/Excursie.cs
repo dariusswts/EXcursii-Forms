@@ -16,6 +16,8 @@ namespace Excursii
         public int locuri;
         public bool confirmata;
 
+        public string ghid;
+
 
 
         public double calcultotal()
@@ -28,8 +30,8 @@ namespace Excursii
         }
         public string Desriere()
         {
-            string text = "Destinatie: " + destinatie + ", " + tara+"\n";
-            text = text + "Durata: " + zile + " zile"+"\n";
+            string text = "Destinatie: " + destinatie + ", " + tara + "\n";
+            text = text + "Durata: " + zile + " zile" + "\n";
             text = text + "Total: " + calcultotal() + " lei" + "\n";
             text = text + "Locuri libere: " + locuri;
             if (confirmata == true)
@@ -45,5 +47,4 @@ namespace Excursii
 
 
     }
-    
 }

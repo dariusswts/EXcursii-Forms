@@ -10,16 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Excursii
 {
     public partial class ExcursiiForm : Form
     {
+
+        
         public List<Excursie> lista = new List<Excursie>();
         public ExcursiiForm()
         {
             InitializeComponent();
-           
-             
+
+
         }
 
         public void LoadExcursii()
@@ -27,7 +30,7 @@ namespace Excursii
             lista.Clear();
             lista = DateExcursii();
         }
-        
+
 
 
         private List<Excursie> DateExcursii()
@@ -39,6 +42,7 @@ namespace Excursii
             e1.pretPeZi = 250;
             e1.locuri = 12;
             e1.confirmata = true;
+            e1.ghid = "Andrei";
 
 
             Excursie e2 = new Excursie();
@@ -48,6 +52,8 @@ namespace Excursii
             e2.pretPeZi = 300;
             e2.locuri = 20;
             e2.confirmata = true;
+            e2.ghid = "Maria";
+
             Excursie e3 = new Excursie();
             e3.destinatie = "Barcelona";
             e3.tara = "Spania";
@@ -55,6 +61,7 @@ namespace Excursii
             e3.pretPeZi = 220;
             e3.locuri = 15;
             e3.confirmata = true;
+            e3.ghid = "Danut";
 
             Excursie e4 = new Excursie();
             e4.destinatie = "Viena";
@@ -63,6 +70,7 @@ namespace Excursii
             e4.pretPeZi = 180;
             e4.locuri = 25;
             e4.confirmata = true;
+            e4.ghid = "Pavel";
 
             Excursie e5 = new Excursie();
             e5.destinatie = "Praga";
@@ -71,6 +79,7 @@ namespace Excursii
             e5.pretPeZi = 140;
             e5.locuri = 18;
             e5.confirmata = false;
+            e5.ghid = "Petrut";
 
             Excursie e6 = new Excursie();
             e6.destinatie = "Atena";
@@ -79,6 +88,7 @@ namespace Excursii
             e6.pretPeZi = 190;
             e6.locuri = 30;
             e6.confirmata = true;
+            e6.ghid = "Vali";
 
             Excursie e7 = new Excursie();
             e7.destinatie = "Amsterdam";
@@ -87,6 +97,7 @@ namespace Excursii
             e7.pretPeZi = 320;
             e7.locuri = 10;
             e7.confirmata = false;
+            e7.ghid = "Nicol";
 
             Excursie e8 = new Excursie();
             e8.destinatie = "Londra";
@@ -95,6 +106,7 @@ namespace Excursii
             e8.pretPeZi = 350;
             e8.locuri = 22;
             e8.confirmata = true;
+            e8.ghid = "Mariusica";
 
             Excursie e9 = new Excursie();
             e9.destinatie = "Lisabona";
@@ -103,6 +115,7 @@ namespace Excursii
             e9.pretPeZi = 200;
             e9.locuri = 14;
             e9.confirmata = true;
+            e9.ghid = "Paul";
 
             Excursie e10 = new Excursie();
             e10.destinatie = "Budapesta";
@@ -111,6 +124,7 @@ namespace Excursii
             e10.pretPeZi = 130;
             e10.locuri = 40;
             e10.confirmata = true;
+            e10.ghid = "Ilie";
 
 
             lista.Add(e1);
@@ -123,41 +137,80 @@ namespace Excursii
             lista.Add(e8);
             lista.Add(e9);
             lista.Add(e10);
-        
+
             return lista;
         }
 
 
         private void ExcursiiForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnIncarca_Click(object sender, EventArgs e)
         {
             lstExcursii.ClearSelected();
             LoadExcursii();
-            for(int i = 0; i < lista.Count; i++)
+            for (int i = 0; i < lista.Count; i++)
             {
                 lstExcursii.Items.Add(lista[i].destinatie + "- (" + lista[i].tara + ") -" + lista[i].zile + " zile-" + lista[i].pretPeZi);
             }
-            lblStare.Text = "Numar excursii: " + lista.Count; 
+            lblStare.Text = "Numar excursii: " + lista.Count;
         }
 
         private void s(object sender, MouseEventArgs e)
         {
 
-            
+
 
         }
 
         private void lstExcursii_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int poz = lstExcursii.SelectedIndex;
+            
+              int poz = lstExcursii.SelectedIndex;
 
+              if (poz >= 0 && poz < lista.Count)
+              {
+                  txtDetalii.Text = lista[poz].Desriere();
+              }
+            
+        }
 
+        private void CreateColumns()
+        {
+            dataGridView1.Columns.Clear();
 
-            txtDetalii.Text = lista[poz].Desriere();
+            dataGridView1.Columns.Add("destinatie", "Destinatie");
+            dataGridView1.Columns.Add("tara", "Tara");
+            dataGridView1.Columns.Add("zile", "Zile");
+            dataGridView1.Columns.Add("pretPeZi", "Pret pe zi");
+            dataGridView1.Columns.Add("locuri", "Locuri");
+            dataGridView1.Columns.Add("confirmata", "Confirmata");
+            dataGridView1.Columns.Add("ghid", "Ghid");
+
+            
+
+        }
+
+        private void btnDetali_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+   
+            for (int i = 0; i < lista.Count; i++)
+            {
+                dataGridView1.Rows.Add(
+                    lista[i].destinatie,
+                    lista[i].tara,
+                    lista[i].zile,
+                    lista[i].pretPeZi,
+                    lista[i].locuri,
+                    lista[i].confirmata,
+                    lista[i].ghid
+                );
+            }
+
         }
     }
+    
 }
