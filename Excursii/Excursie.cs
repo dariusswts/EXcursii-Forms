@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-
+//cONSTRUCTORUL este o functie ce are aceasi nume ca si clasa 
+// nu are tip returnat
+// se apeleaza automat la instantiere(new)
+// se poate supraincarca
 namespace Excursii
 {
     public class Excursie
-    {
+    {  //atributele
         public string destinatie;
         public string tara;
         public int zile;
@@ -18,7 +21,34 @@ namespace Excursii
 
         public string ghid;
 
+      //  constructori
+        public Excursie()
+        {
+            Console.WriteLine("Ce mai faci");
 
+        }
+
+
+        public Excursie(String destinatiaNou)
+        {
+            this.destinatie = destinatiaNou;
+
+        }
+
+       public Excursie(String destinatieNou,String taraNou,int zileNou,double pretPeZiNou,int locuriNou,bool confirmataN,string ghid)
+        {
+            this.destinatie = destinatieNou;
+            this.tara=taraNou;
+            this.zile=zileNou;
+            this.pretPeZi=pretPeZiNou;
+            this.locuri=locuriNou;
+            this.confirmata=confirmataN;
+        }
+
+
+        
+
+        //metodele 
 
         public double calcultotal()
         {

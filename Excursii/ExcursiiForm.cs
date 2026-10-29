@@ -196,6 +196,7 @@ namespace Excursii
         private void btnDetali_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
+            CreateColumns();
    
             for (int i = 0; i < lista.Count; i++)
             {
