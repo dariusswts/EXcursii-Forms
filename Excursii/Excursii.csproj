@@ -52,6 +52,12 @@
     <Compile Include="CalculForm.Designer.cs">
       <DependentUpon>CalculForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetaliiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetaliiForm.Designer.cs">
+      <DependentUpon>DetaliiForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Excursie.cs" />
     <Compile Include="ExcursiiForm.cs">
       <SubType>Form</SubType>
@@ -76,6 +82,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CalculForm.resx">
       <DependentUpon>CalculForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetaliiForm.resx">
+      <DependentUpon>DetaliiForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExcursiiForm.resx">
       <DependentUpon>ExcursiiForm.cs</DependentUpon>
